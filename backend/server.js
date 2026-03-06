@@ -1,0 +1,32 @@
+const express = require("express");
+const app = express();
+require("dotenv").config();
+require("./Config/database");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const PORT = process.env.PORT || 8080;
+
+// app.get("/", (req, res) => {
+//   res.send(`Server is running at ${PORT} `);
+// });
+const authRouter = require("./Routes/authRouter");
+const paymentRouter = require("./Routes/paymentRouter");
+const watchlistRouter = require("./Routes/watchlistRouter");
+const movieRouter = require("./Routes/movieRouter");
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+  res.setHeader("Cross-Origin-Embedder-Policy", "unsafe-none");
+  next();
+});
+
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cookieParser());
+app.use(express.json());
+app.use("/auth", authRouter);
+app.use("/payment", paymentRouter);
+app.use("/watchlist", watchlistRouter);
+app.use("/movies", movieRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on ${PORT} `);
+});
