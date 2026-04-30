@@ -1,4 +1,7 @@
-export const BASE_URL = "http://localhost:8080";
+export const BASE_URL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:8080"
+    : "https://promptplay-backend.vercel.app";
 
 export const API_OPTIONS = {
   method: "GET",
