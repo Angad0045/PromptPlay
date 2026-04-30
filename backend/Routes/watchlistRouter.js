@@ -8,7 +8,6 @@ watchListRouter.post("/", userAuth, async (req, res) => {
     const { id, name, posterPath } = req.body;
     const userId = req.user._id;
 
-    // ✅ input validation
     if (!id || !name || !posterPath) {
       return res
         .status(400)
