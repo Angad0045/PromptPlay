@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8080;
 
 const authRouter = require("./Routes/authRouter");
 const paymentRouter = require("./Routes/paymentRouter");
-const watchListRouter = require("./Routes/watchlistRouter");
+const watchListRouter = require("./Routes/watchListRouter");
 const movieRouter = require("./Routes/movieRouter");
 
 app.use((req, res, next) => {

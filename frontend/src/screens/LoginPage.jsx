@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import AmbientGlow from "../component/AmbientGlow";
-import SignInWithEmailPassword from "../component/SigninWithEmailPassword";
+import SignInWithEmailPassword from "../component/SignInWithEmailPassword";
 import SignInWithGoogle from "../component/SignInWithGoogle";
 
 const LoginPage = () => {
