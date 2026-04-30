@@ -18,7 +18,7 @@ paymentRouter.get("/subscribe", async (req, res) => {
         "customer.id": null,
       },
     });
-    return res.redirect(`${process.env.BASE_URL_FRONTEND}/home`);
+    return res.redirect(`${process.env.CLIENT_URL}/home`);
   }
 
   let priceId;
@@ -42,7 +42,7 @@ paymentRouter.get("/subscribe", async (req, res) => {
 
 paymentRouter.get("/success", async (req, res) => {
   const { session_id } = req.query;
-  if (!session_id) return res.redirect(`${process.env.BASE_URL_FRONTEND}/fail`);
+  if (!session_id) return res.redirect(`${process.env.CLIENT_URL}/fail`);
 
   try {
     const session = await stripe.checkout.sessions.retrieve(session_id, {
@@ -63,18 +63,18 @@ paymentRouter.get("/success", async (req, res) => {
           "subscription.status": subscription.status,
           "customer.id": customer.id,
         },
-      }
+      },
     );
 
-    res.redirect(`${process.env.BASE_URL_FRONTEND}/success`);
+    res.redirect(`${process.env.CLIENT_URL}/success`);
   } catch (err) {
     console.error("Stripe Success Error:", err);
-    res.redirect(`${process.env.BASE_URL_FRONTEND}/fail`);
+    res.redirect(`${process.env.CLIENT_URL}/fail`);
   }
 });
 
 paymentRouter.get("/cancel", async (req, res) => {
-  res.redirect(`${process.env.BASE_URL_FRONTEND}/fail`);
+  res.redirect(`${process.env.CLIENT_URL}/fail`);
 });
 
 paymentRouter.get(
@@ -82,15 +82,15 @@ paymentRouter.get(
   userAuth,
   async (req, res) => {
     const user = req?.user;
-    if (!user) res.redirect(`${process.env.BASE_URL_FRONTEND}/login`);
+    if (!user) res.redirect(`${process.env.CLIENT_URL}/login`);
 
     const portalSession = await stripe.billingPortal.sessions.create({
       customer: req?.params?.customerId,
-      return_url: `${process.env.BASE_URL_FRONTEND}/home`,
+      return_url: `${process.env.CLIENT_URL}/home`,
     });
     const url = portalSession.url;
     res.status(200).json({ message: "Success", url: url });
-  }
+  },
 );
 
 module.exports = paymentRouter;

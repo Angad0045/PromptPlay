@@ -17,7 +17,6 @@ function Avatar() {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const containerRef = useRef(null);
 
-  // ✅ close on outside click
   useEffect(() => {
     const handleClick = (e) => {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
@@ -71,14 +70,9 @@ function Avatar() {
       >
         {/* Spinning border — premium only */}
         {user?.planType === "premium" && (
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 rounded-full border-4 border-transparent border-t-green-500"
-          />
+          <div className="absolute inset-0 rounded-full border-4 border-green-500" />
         )}
 
-        {/* ✅ Show Google picture if available, else icon */}
         <span className="absolute inset-0 flex items-center justify-center">
           {user?.picture ? (
             <img
