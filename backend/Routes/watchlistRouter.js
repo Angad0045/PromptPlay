@@ -1,9 +1,9 @@
 const express = require("express");
 const { userAuth } = require("../Middlewares/userAuth");
 const watchListModel = require("../Models/watchListModel");
-const watchlistRouter = express.Router();
+const watchListRouter = express.Router();
 
-watchlistRouter.post("/", userAuth, async (req, res) => {
+watchListRouter.post("/", userAuth, async (req, res) => {
   try {
     const { id, name, posterPath } = req.body;
     const userId = req.user._id;
@@ -46,7 +46,7 @@ watchlistRouter.post("/", userAuth, async (req, res) => {
   }
 });
 
-watchlistRouter.delete("/:id", userAuth, async (req, res) => {
+watchListRouter.delete("/:id", userAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const userId = req.user._id;
@@ -75,7 +75,7 @@ watchlistRouter.delete("/:id", userAuth, async (req, res) => {
   }
 });
 
-watchlistRouter.get("/", userAuth, async (req, res) => {
+watchListRouter.get("/", userAuth, async (req, res) => {
   try {
     const userId = req.user._id;
 
@@ -97,4 +97,4 @@ watchlistRouter.get("/", userAuth, async (req, res) => {
   }
 });
 
-module.exports = watchlistRouter;
+module.exports = watchListRouter;

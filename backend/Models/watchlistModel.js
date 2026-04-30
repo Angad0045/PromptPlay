@@ -17,7 +17,7 @@ const MovieSchema = new mongoose.Schema({
   },
 });
 
-const WatchlistSchema = new mongoose.Schema(
+const WatchListSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -30,4 +30,4 @@ const WatchlistSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-module.exports = mongoose.model("Watchlist", WatchlistSchema);
+module.exports = mongoose.model("WatchList", WatchListSchema);

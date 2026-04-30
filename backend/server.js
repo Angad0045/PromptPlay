@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8080;
 
 const authRouter = require("./Routes/authRouter");
 const paymentRouter = require("./Routes/paymentRouter");
-const watchlistRouter = require("./Routes/watchlistRouter");
+const watchListRouter = require("./Routes/watchlistRouter");
 const movieRouter = require("./Routes/movieRouter");
 
 app.use((req, res, next) => {
@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/payment", paymentRouter);
-app.use("/watchlist", watchlistRouter);
+app.use("/watchList", watchListRouter);
 app.use("/movies", movieRouter);
 
 if (process.env.NODE_ENV !== "production") {
