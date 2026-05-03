@@ -18,6 +18,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.options("*", cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/auth", authRouter);
