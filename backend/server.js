@@ -17,8 +17,20 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
-app.options("*", cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use(
+  cors({
+    origin: "https://promptplay-beta.vercel.app",
+    credentials: true,
+  }),
+);
+
+app.options(
+  "*",
+  cors({
+    origin: "https://promptplay-beta.vercel.app",
+    credentials: true,
+  }),
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use("/auth", authRouter);
