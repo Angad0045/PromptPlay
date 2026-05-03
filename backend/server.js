@@ -18,18 +18,7 @@ app.use((req, res, next) => {
 });
 
 app.use(
-  cors({
-    origin: "https://promptplay-beta.vercel.app",
-    credentials: true,
-  }),
-);
-
-app.options(
-  "*",
-  cors({
-    origin: "https://promptplay-beta.vercel.app",
-    credentials: true,
-  }),
+  cors({ origin: "https://promptplay-beta.vercel.app", credentials: true }),
 );
 app.use(cookieParser());
 app.use(express.json());
